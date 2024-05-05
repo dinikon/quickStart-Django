@@ -1,0 +1,35 @@
+# Default values for .helm.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+global:
+  namespace: django-project
+
+replicaCount: 1
+name: django-app
+appLabel: django-app
+containerName: django-app
+appHost: localhost
+
+#data base credintial ["prod", "dev"]
+database: prod
+
+containerBackPort: 8000
+exposePort: 8080
+
+image:
+  repository: ghcr.io/dinikon/quickstart-django
+  tag: latest
+
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "50m"
+  limits:
+    memory: "512Mi"
+    cpu: "100m"
+
+config:
+  # Bool значения указывать "True"
+  debug: "False"
+  originHost: "https://localhost"
