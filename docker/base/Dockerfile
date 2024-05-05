@@ -21,4 +21,4 @@ EXPOSE 8000
 CMD ["python", "manage.py", "collectstatic", "--noinput"]
 
 # Запускаем Django-приложение
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["python", "-m", "gunicorn", "app.asgi:application", "-k", "uvicorn.workers.UvicornWorker", "--bind", "0.0.0.0:8000"]
